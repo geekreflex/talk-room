@@ -193,7 +193,21 @@ body {
   /* background-color: blue; */
   border-radius: 5px;
   padding: 10px;
+  display: flex;
 }
+
+.avatar {
+  margin-right: 10px;
+  background-color: #072fe250;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+}
+
 .meta {
   font-weight: 600;
 }

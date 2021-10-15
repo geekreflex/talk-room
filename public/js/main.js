@@ -2,6 +2,7 @@ const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-messages');
 const roomName = document.querySelector('.room-name');
 const userList = document.querySelector('.user-list');
+const leaveBtn = document.querySelector('.leave-room');
 
 const { username, room } = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
@@ -39,17 +40,26 @@ chatForm.addEventListener('submit', (e) => {
   e.target.elements.msg.focus();
 });
 
+leaveBtn.addEventListener('click', () => {
+  window.location.href = 'index.html';
+});
+
 function outputMessage(message) {
   const div = document.createElement('div');
   div.classList.add('message');
   div.innerHTML = `
-  <p class="meta">
-    <span class="${message.text.from}">${message.username}</span>
-    <span class="time">${message.time}</span>
-  </p>
-  <p class="text">
-    ${message.text.msg}
-  </p>
+  <div class="avatar">${
+    message.text.from === 'bot' ? '🤖' : message.username.charAt(0)
+  }</div>
+  <div class="msg-info">
+      <p class="meta">
+      <span class="${message.text.from}">${message.username}</span>
+      <span class="time">${message.time}</span>
+    </p>
+    <p class="text">
+      ${message.text.msg}
+    </p>
+  </div>
   `;
   document.querySelector('.chat-messages').appendChild(div);
 }
